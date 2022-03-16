@@ -6,6 +6,7 @@ import java.util.Objects;
 public class BoardDto {
     private int bno;
     private String name;
+    private String title;
     private String content;
     private Date reg_date;
     private int viewCnt;
@@ -13,8 +14,16 @@ public class BoardDto {
     public BoardDto() {
     }
 
-    public BoardDto(String name, String content) {
+
+
+    public BoardDto(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public BoardDto(String name, String title, String content) {
         this.name = name;
+        this.title = title;
         this.content = content;
     }
 
@@ -64,6 +73,14 @@ public class BoardDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getContent() {
