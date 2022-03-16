@@ -14,9 +14,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int insert(UserDto dto) throws Exception {
-        if (dto == null) {
-            System.out.println("null;");
-        }
         return session.insert(namespace + "insert", dto);
+    }
+
+    @Override
+    public UserDto select(UserDto dto) throws Exception {
+        return session.selectOne(namespace + "select", dto);
     }
 }

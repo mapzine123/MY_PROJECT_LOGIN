@@ -27,4 +27,13 @@ public class UserDaoImplTest {
 
         assertTrue(cnt == 100);
     }
+
+    @Test
+    public void select() throws Exception {
+        UserDto dto = new UserDto("asdf", "1234");
+        UserDto result = userDao.select(dto);
+        System.out.println("result = " + result);
+        assertTrue(result != null);
+
+    }
 }

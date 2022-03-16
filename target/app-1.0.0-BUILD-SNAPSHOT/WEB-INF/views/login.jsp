@@ -8,11 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CodePen - Log In / Sign Up - pure css - #12</title>
-    <link rel='stylesheet' href="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'/>">
+    <link rel='stylesheet'
+          href="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'/>">
     <link rel='stylesheet' href="<c:url value='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/style.css' />">
 
@@ -38,37 +39,43 @@
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">Log In</h4>
                                         <div class="form-group">
-                                            <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                            <input type="email" name="logemail" class="form-style"
+                                                   placeholder="Your Email" id="logemail" autocomplete="off">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                            <input type="password" name="logpass" class="form-style"
+                                                   placeholder="Your Password" id="logpass" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
                                         <a href="#" class="btn mt-4">submit</a>
-                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                                        <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your
+                                            password?</a></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-back">
-                                <div class="center-wrap">
+                                <form class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3">Sign Up</h4>
                                         <div class="form-group">
-                                            <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+                                            <input type="text" name="logname" class="form-style"
+                                                   placeholder="Your Full Name" id="logname" autocomplete="off">
                                             <i class="input-icon uil uil-user"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                            <input type="email" name="logemail" class="form-style"
+                                                   placeholder="Your Email" id="logemail" autocomplete="off">
                                             <i class="input-icon uil uil-at"></i>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                            <input type="password" name="logpass" class="form-style"
+                                                   placeholder="Your Password" id="logpass" autocomplete="off">
                                             <i class="input-icon uil uil-lock-alt"></i>
                                         </div>
-                                        <a href="#" class="btn mt-4">submit</a>
+                                        <input type="submit" class="btn mt-4">submit</input>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -78,7 +85,7 @@
     </div>
 </div>
 <!-- partial -->
-<script  src="/js/script.js"></script>
+<script src="/js/script.js"></script>
 
 </body>
 </html>

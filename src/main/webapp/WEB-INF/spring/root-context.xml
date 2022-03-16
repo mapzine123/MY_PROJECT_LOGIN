@@ -9,7 +9,7 @@
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/springbasic?useUnicode=true&amp;characterEncoding=utf8"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/springbasicdiy?useUnicode=true&amp;characterEncoding=utf8"></property>
 		<property name="username" value="mapzine"></property>
 		<property name="password" value="0000"></property>
 	</bean>

@@ -10,6 +10,11 @@ public class UserDto {
     public UserDto() {
     }
 
+    public UserDto(String email, String pwd) {
+        this.email = email;
+        this.pwd = pwd;
+    }
+
     public UserDto(String email, String name, String pwd) {
         this.email = email;
         this.name = name;
