@@ -35,6 +35,7 @@ public class LoginController {
         try {
             userDto = userService.login(userDto);
             session.setAttribute("email", userDto.getEmail());
+            session.setAttribute("name", userDto.getName());
 
         } catch (Exception e) {
             e.printStackTrace();
