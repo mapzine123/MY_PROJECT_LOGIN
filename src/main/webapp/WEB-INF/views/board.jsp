@@ -20,7 +20,7 @@
 
     <div>
         <button type="button" id="${mode == "new" ? "writeBtn" : "listBtn"}" class="btn btn-info">${mode == "new" ? "등록" : "목록"}</button>
-        <button type=${mode == "new" ? "button" : "hidden"} id="cancelBtn" class="btn btn-danger">취소</button>
+        <button type="button" id="cancelBtn" class="btn btn-danger" hidden>취소</button>
     </div>
 </form>
 <script>
