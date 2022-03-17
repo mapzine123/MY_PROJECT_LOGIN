@@ -13,6 +13,7 @@ public class BoardService {
     @Autowired
     private BoardDao boardDao;
 
+
     public int write(BoardDto boardDto) throws Exception {
         return boardDao.insert(boardDto);
     }
@@ -26,6 +27,7 @@ public class BoardService {
     }
 
     public BoardDto read(int bno) throws Exception {
+        boardDao.increaseViewCnt(bno);
         return boardDao.select(bno);
     }
 }

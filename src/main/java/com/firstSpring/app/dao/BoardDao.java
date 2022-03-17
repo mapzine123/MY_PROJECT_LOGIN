@@ -30,4 +30,8 @@ public class BoardDao {
     public BoardDto select(int bno) {
         return session.selectOne(namespace + "select", bno);
     }
+
+    public int increaseViewCnt(int bno) {
+        return session.update(namespace + "increaseViewCnt", bno);
+    }
 }

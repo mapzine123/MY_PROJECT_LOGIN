@@ -16,8 +16,7 @@
                     <a class="nav-link" href=${sessionScope.email != null ? "login/logout" : "login/login"}>${sessionScope.email != null ? "Logout" : "Login"}</a>
                 </li>
                 <li class="nav-item">
-
-                    <a class="nav-link" href=${read == "read" ? "boardList" : "board/boardList"}>Board</a>
+                    <a class="nav-link" id="" href=${read == "read" ? "boardList" : "board/boardList"}>Board</a>
                 </li>
                 <li class="nav-item">
                     <a id="clickeded" class="nav-link" href="#">About</a>

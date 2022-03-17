@@ -33,7 +33,7 @@
         });
         $("#listBtn").on("click", function() {
             location.href="<c:url value="/board/boardList?page=${page}&pageSize=${pageSize}"/>";
-        })
+        })s
     });
 </script>
 </body>
