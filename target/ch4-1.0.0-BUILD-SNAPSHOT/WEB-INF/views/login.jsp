@@ -27,8 +27,8 @@
         </div>
     </form>
 </div>
-<button type="button" class="btn btn-outline-primary" id="signBtn">Sign In</button>
 <button type="button" class="btn btn-outline-primary" id="loginBtn">Login</button>
+<button type="button" class="btn btn-outline-primary" id="signBtn">Sign In</button>
 <script>
     $(document).ready(function() {
         $("#signBtn").on("click", function() {

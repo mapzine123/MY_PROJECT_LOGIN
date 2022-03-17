@@ -25,7 +25,7 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @GetMapping("/board")
+    @GetMapping("/read")
     public String board(Integer bno, Integer page, Integer pageSize, Model m) {
 
         try {

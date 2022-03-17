@@ -4,8 +4,15 @@ import com.firstSpring.app.domain.UserDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+import javax.sql.DataSource;
 
 import static org.junit.Assert.*;
 
@@ -15,6 +22,9 @@ public class UserDaoImplTest {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private DataSource ds;
 
     @Test
     public void insert() throws Exception {
@@ -26,6 +36,26 @@ public class UserDaoImplTest {
         }
 
         assertTrue(cnt == 100);
+    }
+
+    @Test
+    public void insertTran() throws Exception {
+        PlatformTransactionManager tm = new DataSourceTransactionManager(ds);
+        TransactionStatus status = tm.getTransaction(new DefaultTransactionDefinition());
+        try {
+            UserDto dto = new UserDto("asdf112323@naver.com", "as", "asd");
+            userDao.insert(dto);
+            userDao.insert(dto);
+            tm.commit(status);
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            tm.rollback(status);
+        } finally {
+
+        }
+
+
     }
 
     @Test

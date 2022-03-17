@@ -25,7 +25,7 @@
     <tr class="table-light">
         <td>${boardDto.bno}</td>
         <td>${boardDto.title}</td>
-        <td><a href="<c:url value="/board/board?bno=${boardDto.bno}&page=${page}&pageSize=${pageSize}"/>">${boardDto.content}</a></td>
+        <td><a href="<c:url value="/board/read?bno=${boardDto.bno}&page=${page}&pageSize=${pageSize}"/>">${boardDto.content}</a></td>
         <td>${boardDto.name}</td>
         <td>${boardDto.reg_date}}</td>
         <td>${boardDto.viewCnt}</td>

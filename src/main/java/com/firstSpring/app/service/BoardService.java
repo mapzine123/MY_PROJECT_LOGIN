@@ -4,6 +4,7 @@ import com.firstSpring.app.dao.BoardDao;
 import com.firstSpring.app.domain.BoardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,6 @@ import java.util.Map;
 public class BoardService {
     @Autowired
     private BoardDao boardDao;
-
 
     public int write(BoardDto boardDto) throws Exception {
         return boardDao.insert(boardDto);
@@ -25,8 +25,8 @@ public class BoardService {
     public int getCount() throws Exception {
         return boardDao.count();
     }
-
-    public BoardDto read(int bno) throws Exception {
+    @Transactional(rollbackFor = Exception.class)
+    public BoardDto read(int bno) {
         boardDao.increaseViewCnt(bno);
         return boardDao.select(bno);
     }

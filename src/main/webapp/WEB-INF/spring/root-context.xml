@@ -27,8 +27,7 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-
-
+	<tx:annotation-driven/>
 	<context:component-scan base-package="com.firstSpring.app.**" />
 
 </beans>
