@@ -4,13 +4,34 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />">
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 </head>
 <body>
-<div class="card border-secondary mb-3" style="max-width: 20rem;">
-    <div class="card-header">Header</div>
-    <div class="card-body">
-        <h4 class="card-title">Secondary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<%@ include file="jspf/nav.jspf"%>
+<form id="form">
+    <div class="form-group">
+        <label class="col-form-label col-form-label-lg mt-4" for="inputLarge">Title</label>
+        <input name="title" class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="inputLarge">
     </div>
+    <div class="form-group">
+        <label for="exampleTextarea" class="form-label mt-4">Content</label>
+        <textarea name="content" class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+
+    <div>
+        <button type="button" id="writeBtn" class="btn btn-info">등록</button>
+        <button type="button" id="cancelBtn" class="btn btn-danger">취소</button>
+    </div>
+</form>
+<script>
+    $(document).ready(function() {
+        $("#writeBtn").on("click", function() {
+             let form = $("#form");
+             form.attr("method", "post");
+             form.attr("action", "<c:url value="/board/write"/>");
+             form.submit();
+        });
+    });
+</script>
 </body>
 </html>
