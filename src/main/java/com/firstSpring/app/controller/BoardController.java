@@ -5,7 +5,6 @@ import com.firstSpring.app.domain.PageHandler;
 import com.firstSpring.app.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +37,7 @@ public class BoardController {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", "MOD_ERR");
             m.addAttribute(boardDto);
-            return "board";
+            return "viewBoard";
         }
 
     }
@@ -63,7 +62,7 @@ public class BoardController {
             e.printStackTrace();
         }
 
-        return "board";
+        return "viewBoard";
     }
 
     @GetMapping("/boardList")
@@ -102,7 +101,7 @@ public class BoardController {
     @GetMapping("/write")
     public String write(Model m) {
         m.addAttribute("mode", "new");
-        return "board";
+        return "viewBoard";
     }
     @PostMapping("/write")
     public String write(BoardDto boardDto, HttpSession session, Model m, RedirectAttributes rattr) {
@@ -121,7 +120,7 @@ public class BoardController {
             rattr.addFlashAttribute("msg", "WRT_ERR");
             m.addAttribute("title", boardDto.getTitle());
             m.addAttribute("content", boardDto.getContent());
-            return "/board";
+            return "viewBoard";
         }
 
     }
