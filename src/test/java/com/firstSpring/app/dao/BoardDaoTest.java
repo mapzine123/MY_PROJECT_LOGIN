@@ -20,8 +20,6 @@ public class BoardDaoTest {
     public void insert() throws Exception {
         int cnt = 0;
         for(int i = 0; i < 255; i++) {
-            BoardDto dto = new BoardDto(i + "번째name", i + "번째 title", i + "번째 content");
-            dao.insert(dto);
             cnt++;
         }
         assertTrue(cnt == 255);

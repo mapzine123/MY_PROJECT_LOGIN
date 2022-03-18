@@ -20,15 +20,15 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    @Transactional(rollbackFor = Exception.class)
     public int register(UserDto userDto) throws Exception {
         int rowCnt1 = userDao.insert(userDto);
         return userDao.insert(userDto);
     }
     @Transactional(rollbackFor = Exception.class)
-    public void register1(UserDto userDto) throws Exception {
+    public int register1(UserDto userDto) throws Exception {
         int rowCnt1 = userDao.insert(userDto);
         int rowCnt2 = userDao.insert(userDto);
+        return rowCnt2;
     }
 
     public UserDto login(UserDto userDto) throws Exception {

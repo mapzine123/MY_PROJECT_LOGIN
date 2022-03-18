@@ -34,4 +34,7 @@ public class BoardDao {
     public int increaseViewCnt(int bno) {
         return session.update(namespace + "increaseViewCnt", bno);
     }
+    public int update(BoardDto boardDto) {
+        return session.update(namespace + "update", boardDto);
+    }
 }

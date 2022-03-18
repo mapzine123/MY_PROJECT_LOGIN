@@ -25,7 +25,11 @@ public class BoardService {
     public int getCount() throws Exception {
         return boardDao.count();
     }
-    @Transactional(rollbackFor = Exception.class)
+
+    public int modify(BoardDto boardDto) throws Exception {
+        return boardDao.update(boardDto);
+    }
+
     public BoardDto read(int bno) {
         boardDao.increaseViewCnt(bno);
         return boardDao.select(bno);

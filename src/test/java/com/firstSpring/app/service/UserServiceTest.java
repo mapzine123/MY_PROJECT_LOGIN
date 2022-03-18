@@ -20,10 +20,13 @@ public class UserServiceTest {
 
     @Test
     public void register() throws Exception {
-        UserDto dto = new UserDto("1223@naver.com", "as", "asd");
-        userService.register1(dto);
+        UserDto dto1 = new UserDto("233@du.com", "as", "asd");
+        UserDto dto2 = new UserDto("2123233@gma.com", "as", "asd");
 
-        assertTrue(1 == 1);
+        int rowCnt = userService.register1(dto1);
+
+        System.out.println("return : rowCnt = " + rowCnt);
+        assertTrue(rowCnt == 1);
     }
 
     @Test

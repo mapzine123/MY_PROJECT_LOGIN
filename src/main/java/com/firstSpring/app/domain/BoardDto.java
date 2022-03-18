@@ -10,6 +10,7 @@ public class BoardDto {
     private String content;
     private Date reg_date;
     private int viewCnt;
+    private String email;
 
     public BoardDto() {
     }
@@ -25,6 +26,13 @@ public class BoardDto {
         this.name = name;
         this.title = title;
         this.content = content;
+    }
+
+    public BoardDto(String name, String title, String content, String email) {
+        this.name = name;
+        this.title = title;
+        this.content = content;
+        this.email = email;
     }
 
     public BoardDto(int bno, String name, String content, Date reg_date, int viewCnt) {
@@ -105,5 +113,13 @@ public class BoardDto {
 
     public void setViewCnt(int viewCnt) {
         this.viewCnt = viewCnt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

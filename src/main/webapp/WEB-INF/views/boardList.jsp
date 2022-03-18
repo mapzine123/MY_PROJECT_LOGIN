@@ -7,8 +7,12 @@
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 </head>
 <body>
+
+
+<%-- navi --%>
 <%@ include file="jspf/nav.jspf"%>
 
+<%-- 게시판 --%>
 <table class="table table-hover">
     <thead>
     <tr>
@@ -35,6 +39,7 @@
 </table>
 
 
+<%-- 게시판 밑 인덱스 --%>
 <div>
     <ul class="pagination pagination-lg">
         <c:if test="${ph.showPrev}">
