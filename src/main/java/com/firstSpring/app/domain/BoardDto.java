@@ -15,7 +15,11 @@ public class BoardDto {
     public BoardDto() {
     }
 
-
+    public BoardDto(int bno, String title, String content) {
+        this.bno = bno;
+        this.title = title;
+        this.content = content;
+    }
 
     public BoardDto(String title, String content) {
         this.title = title;
@@ -61,9 +65,11 @@ public class BoardDto {
         return "BoardDto{" +
                 "bno=" + bno +
                 ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", reg_date=" + reg_date +
                 ", viewCnt=" + viewCnt +
+                ", email='" + email + '\'' +
                 '}';
     }
 

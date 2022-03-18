@@ -24,6 +24,8 @@
             <button type="button" id="modifyBtn" class="btn btn-info">수정</button>
         </c:if>
         <button type="button" id="listBtn" class="btn btn-info">목록</button>
+        <input type="hidden" id="mode" name="mode">
+        <input type="text" id="bno" name="bno" value="${boardDto.bno}">
     </div>
 </form>
 <script>
@@ -32,7 +34,13 @@
             location.href="<c:url value="/board/boardList?page=${page}&pageSize=${pageSize}"/>";
         });
         $("#modifyBtn").on("click", function() {
-            location.href="<c:url value='/board/write'/>";
+            let form = $("#form");
+            form.attr("method",  "POST");
+            form.attr("action", "<c:url value="/board/goModify"/>");
+
+            let mode = $("#mode");
+            mode.attr("value", "modify");
+            form.submit();
         });
     });
 </script>

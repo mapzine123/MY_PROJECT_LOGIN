@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<script>
+    if(${msg == "MOD_OK"}) {
+        alert("성공적으로 수정되었습니다.");
+    }
+</script>
 
 <%-- navi --%>
 <%@ include file="jspf/nav.jspf"%>

@@ -24,15 +24,26 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @PostMapping("/goModify")
+    public String goModify(BoardDto boardDto, Model m) {
+        System.out.println("boardDto in gomodify = " + boardDto);
+        m.addAttribute(boardDto);
+        m.addAttribute("mode", "modify");
+        return "writeBoard";
+    }
+
     @PostMapping("/modify")
-    public String modify(BoardDto boardDto, Model m, RedirectAttributes rattr) {
+    public String modify(BoardDto boardDto, Model m, HttpSession session, RedirectAttributes rattr) {
         try {
+            boardDto.setName((String)session.getAttribute("name"));
+            boardDto.setEmail((String)session.getAttribute("email"));
+            System.out.println("boardDto in modify = " + boardDto);
             int rowCnt = boardService.modify(boardDto);
             if(rowCnt != 1) {
                 throw new Exception("Modify_error");
             }
             rattr.addFlashAttribute("msg", "MOD_OK");
-            return "redirect:/board/boarList";
+            return "redirect:/board/boardList";
         } catch (Exception e) {
             e.printStackTrace();
             rattr.addFlashAttribute("msg", "MOD_ERR");
@@ -47,13 +58,9 @@ public class BoardController {
 
         try {
             BoardDto boardDto = boardService.read(bno);
-            System.out.println("boardDto.getEmail() = " + boardDto.getEmail());
-            System.out.println("session.getAttribute(\"email\") = " + session.getAttribute("email"));
-            
+
             if(boardDto.getEmail().equals(session.getAttribute("email"))) {
                 m.addAttribute("mode", "modify");
-            } else {
-                m.addAttribute("mode", "read");
             }
             m.addAttribute("page", page);
             m.addAttribute("pageSize", pageSize);
@@ -101,18 +108,18 @@ public class BoardController {
     @GetMapping("/write")
     public String write(Model m) {
         m.addAttribute("mode", "new");
-        return "viewBoard";
+        return "writeBoard";
     }
     @PostMapping("/write")
     public String write(BoardDto boardDto, HttpSession session, Model m, RedirectAttributes rattr) {
         boardDto.setName((String)session.getAttribute("name"));
         boardDto.setEmail((String)session.getAttribute("email"));
-        System.out.println("boardDto.getEmail() = " + boardDto.getEmail());
         try {
             int rowCnt = boardService.write(boardDto);
             if (rowCnt != 1) {
                 throw new Exception("Write Error");
             }
+
             rattr.addFlashAttribute("msg", "WRT_OK");
             return "redirect:/board/boardList";
         } catch (Exception e) {
