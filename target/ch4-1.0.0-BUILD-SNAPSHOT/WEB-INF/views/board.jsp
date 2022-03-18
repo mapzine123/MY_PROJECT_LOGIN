@@ -8,10 +8,7 @@
 </head>
 <body>
 <script>
-    let msg = "";
-    if(${mode == "read"}) {
-        msg = "readonly";
-    }
+    alert(${mode});
 </script>
 
 <%@ include file="jspf/nav.jspf"%>
@@ -26,8 +23,8 @@
     </div>
 
     <div>
-        <c:if test="${mode} == 'modify'">
-            <button type="button" id="modifyBtn" class="btn btn-info">"수정"</button>
+        <c:if test="${mode == 'modify'}">
+            <button type="button" id="modifyBtn" class="btn btn-info">수정</button>
         </c:if>
         <button type="button" id="${mode == "new" ? "writeBtn" : "listBtn"}" class="btn btn-info">${mode == "new" ? "등록" : "목록"}</button>
         <button type="button" id="cancelBtn" class="btn btn-danger">취소</button>
@@ -48,7 +45,10 @@
             location.href="<c:url value="/board/boardList?page=${page}&pageSize=${pageSize}"/>";
         });
         $("#modifyBtn").on("click", function() {
-            location.href="<c:url value='/board/modify'/>";
+            let form=$("#form");
+            form.attr("method", "POST");
+            form.attr("action", "<c:url value='/board/modify'/>");
+            form.submit();
         });
     });
 </script>

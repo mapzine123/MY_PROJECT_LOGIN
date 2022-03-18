@@ -13,7 +13,7 @@
         SELECT count(*) FROM board;
     </select>
     <select id="select" resultType="BoardDto" parameterType="int">
-        SELECT bno, title, content, name FROM board WHERE bno = #{bno}
+        SELECT bno, title, content, name, email FROM board WHERE bno = #{bno}
     </select>
 
     <update id="increaseViewCnt" parameterType="int">

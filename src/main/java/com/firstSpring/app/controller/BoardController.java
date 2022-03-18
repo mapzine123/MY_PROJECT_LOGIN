@@ -48,7 +48,9 @@ public class BoardController {
 
         try {
             BoardDto boardDto = boardService.read(bno);
-
+            System.out.println("boardDto.getEmail() = " + boardDto.getEmail());
+            System.out.println("session.getAttribute(\"email\") = " + session.getAttribute("email"));
+            
             if(boardDto.getEmail().equals(session.getAttribute("email"))) {
                 m.addAttribute("mode", "modify");
             } else {
