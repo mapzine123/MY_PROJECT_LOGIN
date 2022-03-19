@@ -12,23 +12,60 @@
     <title>Title</title>
     <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />">
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <style>
+        .body_container {
+            position: relative;
+        }
+        .login_container {
+            display : flex;
+            width : 100%;
+            height: 80%;
+            align-items: center;
+            justify-content: center;
+        }
+        .login_container_bottom {
+            margin-top : 15px;
+        }
+
+        .input_box {
+            width : 480px;
+        }
+        .btn_container {
+            float : right;
+        }
+    </style>
 </head>
 <body>
-<div class="form-group">
-    <form id="form">
-        <label class="form-label mt-4">Floating labels</label>
-        <div class="form-floating mb-3">
-            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+<div class="body_container">
+    <div class="form-group login_container">
+        <div>
+            <form id="form">
+                <label class="form-label mt-4">Login</label>
+                <div class="form-floating mb-3">
+                    <input type="email" name="email" class="form-control input_box" id="floatingInput" value="${cookie.email.value}" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="pwd" class="form-control input_box" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-check login_container_bottom">
+                    <input class="form-check-input" type="checkbox" name="rememberId" value="true" id="flexCheckDefault" ${empty cookie.id.value ? "" : "checked"}>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Auto login
+                    </label>
+                    <div class="btn_container">
+                        <button type="button" class="btn btn-outline-primary" id="loginBtn">Login</button>
+                        <button type="button" class="btn btn-outline-primary" id="signBtn">Sign In</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-floating">
-            <input type="password" name="pwd" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
-    </form>
+
+
+    </div>
+
 </div>
-<button type="button" class="btn btn-outline-primary" id="loginBtn">Login</button>
-<button type="button" class="btn btn-outline-primary" id="signBtn">Sign In</button>
 <script>
     $(document).ready(function() {
         $("#signBtn").on("click", function() {

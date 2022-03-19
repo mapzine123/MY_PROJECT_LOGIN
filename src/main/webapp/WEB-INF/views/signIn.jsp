@@ -12,24 +12,49 @@
     <title>Title</title>
     <link rel="stylesheet" href="<c:url value='/css/bootstrap.css' />">
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <style>
+        .body_container {
+            position: relative;
+        }
+        .input_container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width : 100%;
+            height: 80%;
+        }
+
+        .btn_container {
+            margin-top : 20px;
+            float: right;
+        }
+    </style>
 </head>
 <body>
-<form id="form">
-    <div class="form-group">
-        <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="body_container">
+    <div class="input_container">
+        <form id="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label mt-4" for="inputDefault">Your Nickname</label>
+                <input type="text" name="name" class="form-control" placeholder="input your name" id="inputDefault">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+                <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="btn_container">
+                <button type="button" class="btn btn-outline-primary" id="signBtn">Sign In</button>
+                <button type="button" class="btn btn-outline-danger" id="cancelBtn">cancel</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label class="col-form-label mt-4" for="inputDefault">Default input</label>
-        <input type="text" name="name" class="form-control" placeholder="input your name" id="inputDefault">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-        <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <button type="button" class="btn btn-outline-primary" id="signBtn">Sign In</button>
-</form>
+</div>
+
 <script>
     $(document).ready(function() {
        $("#signBtn").on("click", function() {
@@ -38,6 +63,9 @@
            form.attr("action", "<c:url value='/login/signIn'/>");
            form.submit();
        });
+        $("#cancelBtn").on("click", function() {
+            location.href="<c:url value="/"/>";
+        });
     });
 </script>
 </body>

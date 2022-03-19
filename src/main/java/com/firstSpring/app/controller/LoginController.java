@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -31,11 +33,14 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(UserDto userDto, HttpSession session, Model m) {
+    public String login(UserDto userDto, boolean rememberId, HttpSession session, HttpServletResponse response, Model m) {
         try {
             userDto = userService.login(userDto);
             session.setAttribute("email", userDto.getEmail());
             session.setAttribute("name", userDto.getName());
+
+            Cookie cookie = new Cookie("email", userDto.getEmail());
+            response.addCookie(cookie);
 
         } catch (Exception e) {
             e.printStackTrace();

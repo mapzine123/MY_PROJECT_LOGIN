@@ -26,7 +26,7 @@
         </c:if>
         <button type="button" id="listBtn" class="btn btn-info">목록</button>
         <input type="hidden" id="mode" name="mode">
-        <input type="text" id="bno" name="bno" value="${boardDto.bno}">
+        <input type="hidden" id="bno" name="bno" value="${boardDto.bno}">
     </div>
 </form>
 <script>
