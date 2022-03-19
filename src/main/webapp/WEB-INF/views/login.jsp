@@ -50,7 +50,7 @@
                     <label for="floatingPassword">Password</label>
                 </div>
                 <div class="form-check login_container_bottom">
-                    <input class="form-check-input" type="checkbox" name="rememberId" value="true" id="flexCheckDefault" ${empty cookie.id.value ? "" : "checked"}>
+                    <input class="form-check-input" type="checkbox" name="rememberId" value="true" id="flexCheckDefault" ${empty cookie.email.value ? "" : "checked"}>
                     <label class="form-check-label" for="flexCheckDefault">
                         Auto login
                     </label>

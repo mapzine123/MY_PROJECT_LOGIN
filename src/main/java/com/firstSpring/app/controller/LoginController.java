@@ -38,9 +38,13 @@ public class LoginController {
             userDto = userService.login(userDto);
             session.setAttribute("email", userDto.getEmail());
             session.setAttribute("name", userDto.getName());
-
-            Cookie cookie = new Cookie("email", userDto.getEmail());
+            Cookie cookie = null;
+            cookie = new Cookie("email", userDto.getEmail());
+            if(!rememberId) {
+                cookie.setMaxAge(0);
+            }
             response.addCookie(cookie);
+
 
         } catch (Exception e) {
             e.printStackTrace();
