@@ -34,4 +34,8 @@ public class BoardService {
         boardDao.increaseViewCnt(bno);
         return boardDao.select(bno);
     }
+
+    public int delete(Map map) {
+        return boardDao.delete(map);
+    }
 }

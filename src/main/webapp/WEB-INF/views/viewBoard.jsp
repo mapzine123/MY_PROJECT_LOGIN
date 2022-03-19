@@ -20,8 +20,9 @@
     </div>
 
     <div>
-        <c:if test="${mode == 'modify'}">
+        <c:if test="${mode == 'accessable'}">
             <button type="button" id="modifyBtn" class="btn btn-info">수정</button>
+            <button type="button" id="deleteBtn" class="btn, btn-danger">삭제</button>
         </c:if>
         <button type="button" id="listBtn" class="btn btn-info">목록</button>
         <input type="hidden" id="mode" name="mode">
@@ -40,6 +41,12 @@
 
             let mode = $("#mode");
             mode.attr("value", "modify");
+            form.submit();
+        });
+        $("#deleteBtn").on("click", function() {
+            let form = $("#form");
+            form.attr("method", "POST");
+            form.attr("action", "<c:url value='/board/delete'/>");
             form.submit();
         });
     });

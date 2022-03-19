@@ -37,4 +37,8 @@ public class BoardDao {
     public int update(BoardDto boardDto) {
         return session.update(namespace + "update", boardDto);
     }
+
+    public int delete(Map map) {
+        return session.delete(namespace + "delete", map);
+    }
 }

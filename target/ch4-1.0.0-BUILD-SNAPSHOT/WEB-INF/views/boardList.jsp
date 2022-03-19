@@ -9,9 +9,13 @@
 <body>
 
 <script>
+    let message;
     if(${msg == "MOD_OK"}) {
-        alert("성공적으로 수정되었습니다.");
+        message = "성공적으로 수정하였습니다."
+    } else if($msg == "DEL_OK") {
+        message = "성공적으로 삭제되었습니다."
     }
+    alert(message);
 </script>
 
 <%-- navi --%>

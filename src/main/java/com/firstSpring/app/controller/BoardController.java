@@ -24,6 +24,25 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @PostMapping("/delete")
+    public String delete(Integer bno, Model m, HttpSession session, RedirectAttributes rattr) {
+        try {
+            Map map = new HashMap();
+            map.put("bno", bno);
+            map.put("email", (String)session.getAttribute("email"));
+            int rowCnt = boardService.delete(map);
+            if (rowCnt != 1) {
+                throw new Exception("delete ERR");
+            }
+            rattr.addFlashAttribute("msg", "DEL_OK");
+            return "redirect:/board/boardList";
+        } catch (Exception e) {
+            e.printStackTrace();
+            rattr.addFlashAttribute("msg", "DEL_ERR");
+            return "viewBoard";
+        }
+    }
+
     @PostMapping("/goModify")
     public String goModify(BoardDto boardDto, Model m) {
         System.out.println("boardDto in gomodify = " + boardDto);
@@ -37,7 +56,6 @@ public class BoardController {
         try {
             boardDto.setName((String)session.getAttribute("name"));
             boardDto.setEmail((String)session.getAttribute("email"));
-            System.out.println("boardDto in modify = " + boardDto);
             int rowCnt = boardService.modify(boardDto);
             if(rowCnt != 1) {
                 throw new Exception("Modify_error");
@@ -60,7 +78,7 @@ public class BoardController {
             BoardDto boardDto = boardService.read(bno);
 
             if(boardDto.getEmail().equals(session.getAttribute("email"))) {
-                m.addAttribute("mode", "modify");
+                m.addAttribute("mode", "accessable");
             }
             m.addAttribute("page", page);
             m.addAttribute("pageSize", pageSize);
@@ -119,7 +137,7 @@ public class BoardController {
             if (rowCnt != 1) {
                 throw new Exception("Write Error");
             }
-
+            System.out.println("boardDto = " + boardDto);
             rattr.addFlashAttribute("msg", "WRT_OK");
             return "redirect:/board/boardList";
         } catch (Exception e) {
@@ -127,7 +145,7 @@ public class BoardController {
             rattr.addFlashAttribute("msg", "WRT_ERR");
             m.addAttribute("title", boardDto.getTitle());
             m.addAttribute("content", boardDto.getContent());
-            return "viewBoard";
+            return "redirect:/board/viewBoard";
         }
 
     }

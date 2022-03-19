@@ -37,9 +37,11 @@
             <textarea class="form-control" id="exampleTextarea" name="content" rows="10" placeholder="Input your Content">${boardDto.content}</textarea>
         </div>
         <div class="btn_container">
-            <button type="button" class="btn btn-info" id=${mode == "modify" ? "modifyBtn" : "writeBtn"}>등록</button>
+            <button type="button" class="btn btn-info" id=${mode == "accessable" ? "modifyBtn" : "writeBtn"}>등록</button>
             <button type="button" class="btn btn-warning" id="cancelBtn">취소</button>
-            <input type="hidden" id="bno" name="bno" value="${boardDto.bno}">
+            <c:if test="${mode == 'accessable'}">
+                <input type="hidden" id="bno" name="bno" value="${boardDto.bno}">
+            </c:if>
         </div>
     </form>
     <script>
