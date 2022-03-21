@@ -36,6 +36,7 @@
     </style>
 </head>
 <body>
+<%@ include file="jspf/nav.jspf"%>
 <div class="body_container">
     <div class="form-group login_container">
         <div>
@@ -80,6 +81,17 @@
             form.attr("action", "<c:url value='/login/login'/>");
             form.submit();
         });
+
+        function validate(element, notice_element, condition) {
+            if(condition) {
+                element.classList.add('is-invalid');
+                notice_element.style.display = 'block';
+                return true;
+            } else {
+                element.classList.remove('is-invalid');
+                notice_element.style.display = 'none';
+            }
+        }
     });
 </script>
 </body>

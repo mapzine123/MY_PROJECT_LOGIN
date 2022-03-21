@@ -36,6 +36,7 @@
     </style>
 </head>
 <body>
+<%@ include file="jspf/nav.jspf"%>
 <div class="body_container">
     <div class="form-group login_container">
         <div>
