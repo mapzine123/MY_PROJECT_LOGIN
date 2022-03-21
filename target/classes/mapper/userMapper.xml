@@ -5,6 +5,11 @@
     <insert id="insert" parameterType="UserDto">
         INSERT INTO user_info VALUES (#{email}, #{name}, #{pwd})
     </insert>
+
+    <select id="validSelect" resultType="UserDto" parameterType="UserDto">
+        SELECT * FROM user_info WHERE (email = #{email})
+    </select>
+
     <select id="select" resultType="UserDto" parameterType="UserDto">
         SELECT * FROM user_info WHERE (email = #{email} AND pwd = #{pwd})
     </select>

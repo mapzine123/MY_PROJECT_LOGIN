@@ -7,4 +7,5 @@ import org.springframework.stereotype.Component;
 public interface UserDao {
     int insert(UserDto dto)throws Exception;
     UserDto select(UserDto dto) throws Exception;
+    UserDto validSelect(UserDto dto) throws Exception;
 }

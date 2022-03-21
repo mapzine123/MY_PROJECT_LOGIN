@@ -30,6 +30,11 @@ public class UserDaoImpl implements UserDao {
         return session.insert(namespace + "insert", dto);
     }
 
+    @Override
+    public UserDto validSelect(UserDto dto) throws Exception {
+        return session.selectOne(namespace + "validSelect", dto);
+    }
+
 //    @Override
 //    public int insert(UserDto dto) throws Exception {
 //        try {

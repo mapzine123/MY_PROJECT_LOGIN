@@ -43,19 +43,22 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(UserDto userDto, boolean rememberId, HttpSession session, HttpServletResponse response, Model m) {
+    public String login(@Valid UserDto userDto, boolean rememberId, HttpSession session, HttpServletResponse response, Model m, BindingResult result) {
         try {
-            userDto = userService.login(userDto);
+            UserDto dbUserDto = userService.login(userDto);
+            if((dbUserDto == null) || result.hasErrors()) {
+                m.addAttribute("msg", "LOG_ERR");
+                m.addAttribute("email", userDto.getEmail());
+                return "login";
+            }
+
             session.setAttribute("email", userDto.getEmail());
             session.setAttribute("name", userDto.getName());
-            Cookie cookie = null;
-            cookie = new Cookie("email", userDto.getEmail());
+            Cookie cookie = new Cookie("email", userDto.getEmail());
             if(!rememberId) {
                 cookie.setMaxAge(0);
             }
             response.addCookie(cookie);
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

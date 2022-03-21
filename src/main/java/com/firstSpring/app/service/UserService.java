@@ -31,6 +31,11 @@ public class UserService {
         return rowCnt2;
     }
 
+    public UserDto validLogin(UserDto userDto) throws Exception {
+        UserDto result = userDao.validSelect(userDto);
+        return result;
+    }
+
     public UserDto login(UserDto userDto) throws Exception {
         UserDto result = userDao.select(userDto);
         return result;
