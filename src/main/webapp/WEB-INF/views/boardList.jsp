@@ -67,12 +67,12 @@
         <form class="search_form">
             <div class="form-group">
                 <select class="form-select search_box" id="exampleSelect1">
-                    <option>제목 + 내용</option>
-                    <option>제목만</option>
-                    <option>작성자</option>
+                    <option value="A" ${ph.sc.option=='A' || ph.sc.option == '' ? "selected" : ""}>제목 + 내용</option>
+                    <option value="T" ${ph.sc.option == 'T' ? "selected" : ""}>제목만</option>
+                    <option value="W" ${ph.sc.option == 'W' ? "selected" : ""}>작성자</option>
                 </select>
             </div>
-            <input class="form-control me-sm-2 search_input" type="text" placeholder="Search">
+            <input class="form-control me-sm-2 search_input" name="keyword" value="${ph.sc.keyword}" type="text" placeholder="Search">
             <button class="btn btn-secondary my-2 my-sm-0 search_btn" type="submit">Search</button>
             <button type="button" class="btn btn-outline-primary write_btn" id="writeBtn">글 쓰기</button>
         </form>

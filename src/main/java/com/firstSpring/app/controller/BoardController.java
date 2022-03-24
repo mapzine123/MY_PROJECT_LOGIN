@@ -2,6 +2,7 @@ package com.firstSpring.app.controller;
 
 import com.firstSpring.app.domain.BoardDto;
 import com.firstSpring.app.domain.PageHandler;
+import com.firstSpring.app.domain.SearchCondition;
 import com.firstSpring.app.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,31 +92,19 @@ public class BoardController {
     }
 
     @GetMapping("/boardList")
-    public String boardList(Integer page, Integer pageSize, HttpServletRequest request, HttpSession session, Model m) {
+    public String boardList(SearchCondition sc, HttpServletRequest request, HttpSession session, Model m) {
         if(session.getAttribute("email") == null) {
             return "login";
         }
 
-        if (page == null) {
-            page = 1;
-        }
-        if (pageSize == null) {
-            pageSize = 10;
-        }
-
         try {
             int totalCnt = boardService.getCount();
-            PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
+            PageHandler pageHandler = new PageHandler(totalCnt, sc);
 
-            Map map = new HashMap();
-            map.put("offset", (page - 1) * pageSize);
-            map.put("pageSize", pageSize);
-
-            List<BoardDto> list = boardService.getPage(map);
+            List<BoardDto> list = boardService.getSearchResultPage(sc);
+            m.addAttribute("totalCnt", totalCnt);
             m.addAttribute("list", list);
             m.addAttribute("ph", pageHandler);
-            m.addAttribute("page", page);
-            m.addAttribute("pageSize", pageSize);
         } catch (Exception e) {
             e.printStackTrace();
         }
