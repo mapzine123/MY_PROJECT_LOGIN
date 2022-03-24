@@ -30,8 +30,13 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/error")
+    public String error() throws Exception {
+        throw new Exception();
+    }
+
     @GetMapping("/logout")
-    public String logout(HttpSession session, RedirectAttributes rattr) {
+    public String logout(HttpSession session, RedirectAttributes rattr) throws Exception {
         session.invalidate();
         rattr.addFlashAttribute("msg", "LOGOUT");
         return "redirect:/";
