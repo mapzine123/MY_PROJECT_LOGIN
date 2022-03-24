@@ -92,7 +92,7 @@ public class BoardController {
     }
 
     @GetMapping("/boardList")
-    public String boardList(SearchCondition sc, HttpServletRequest request, HttpSession session, Model m) {
+    public String boardList(SearchCondition sc, String option, HttpServletRequest request, HttpSession session, Model m) {
         if(session.getAttribute("email") == null) {
             return "login";
         }

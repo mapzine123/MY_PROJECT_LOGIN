@@ -65,8 +65,8 @@
     <%--게시판 검색--%>
     <div id="search_container">
         <form class="search_form" action="<c:url value="/board/boardList"/>" method="get">
-            <div class="form-group">
-                <select class="form-select search_box" id="exampleSelect1">
+            <div class="form-group" >
+                <select class="form-select search_box" id="exampleSelect1" name="option">
                     <option value="A" ${ph.sc.option=='A' || ph.sc.option == '' ? "selected" : ""}>제목 + 내용</option>
                     <option value="T" ${ph.sc.option == 'T' ? "selected" : ""}>제목만</option>
                     <option value="W" ${ph.sc.option == 'W' ? "selected" : ""}>작성자</option>

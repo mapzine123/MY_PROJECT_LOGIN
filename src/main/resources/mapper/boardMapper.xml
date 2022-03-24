@@ -24,7 +24,7 @@
                 AND title LIKE concat('%', #{keyword}, '%')
             </when>
             <when test='option=="W"'>
-                AND writer LIKE concat('%', #{keyword}, '%')
+                AND name LIKE concat('%', #{keyword}, '%')
             </when>
             <otherwise>
                 AND (title LIKE concat('%', #{keyword}, '%')
