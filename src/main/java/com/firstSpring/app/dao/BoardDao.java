@@ -1,6 +1,7 @@
 package com.firstSpring.app.dao;
 
 import com.firstSpring.app.domain.BoardDto;
+import com.firstSpring.app.domain.SearchCondition;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -40,5 +41,13 @@ public class BoardDao {
 
     public int delete(Map map) {
         return session.delete(namespace + "delete", map);
+    }
+
+    public int searchResultCnt(SearchCondition sc) throws Exception {
+        return session.selectOne(namespace + "searchResultCnt", sc);
+    }
+
+    public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
+        return session.selectList(namespace + "searchSelectPage", sc);
     }
 }

@@ -2,6 +2,7 @@ package com.firstSpring.app.service;
 
 import com.firstSpring.app.dao.BoardDao;
 import com.firstSpring.app.domain.BoardDto;
+import com.firstSpring.app.domain.SearchCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +26,13 @@ public class BoardService {
     public int getCount() throws Exception {
         return boardDao.count();
     }
+    public List<BoardDto> getSearchResultPage(SearchCondition sc) throws Exception {
+        return boardDao.searchSelectPage(sc);
+    }
+    public int getSearchResultCnt(SearchCondition sc) throws Exception {
+        return boardDao.searchResultCnt(sc);
+    }
+
 
     public int modify(BoardDto boardDto) throws Exception {
         return boardDao.update(boardDto);
