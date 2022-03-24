@@ -64,15 +64,15 @@
 
     <%--게시판 검색--%>
     <div id="search_container">
-        <form class="search_form">
+        <form class="search_form" action="<c:url value="/board/boardList"/>" method="get">
             <div class="form-group">
                 <select class="form-select search_box" id="exampleSelect1">
-                    <option>제목 + 내용</option>
-                    <option>제목만</option>
-                    <option>작성자</option>
+                    <option value="A" ${ph.sc.option=='A' || ph.sc.option == '' ? "selected" : ""}>제목 + 내용</option>
+                    <option value="T" ${ph.sc.option == 'T' ? "selected" : ""}>제목만</option>
+                    <option value="W" ${ph.sc.option == 'W' ? "selected" : ""}>작성자</option>
                 </select>
             </div>
-            <input class="form-control me-sm-2 search_input" type="text" placeholder="Search">
+            <input class="form-control me-sm-2 search_input" name="keyword" value="${ph.sc.keyword}" type="text" placeholder="Search">
             <button class="btn btn-secondary my-2 my-sm-0 search_btn" type="submit">Search</button>
             <button type="button" class="btn btn-outline-primary write_btn" id="writeBtn">글 쓰기</button>
         </form>
@@ -96,7 +96,7 @@
                     <tr class="table-light">
                         <td>${boardDto.bno}</td>
                         <td>${boardDto.title}</td>
-                        <td><a href="<c:url value="/board/read?bno=${boardDto.bno}&page=${page}&pageSize=${pageSize}"/>">${boardDto.content}</a></td>
+                        <td><a href="<c:url value="/board/read${ph.sc.queryString}&bno=${boardDto.bno}"/>"><c:out value="${boardDto.content}"/></a></td>
                         <td>${boardDto.name}</td>
                         <td>${boardDto.reg_date}}</td>
                         <td>${boardDto.viewCnt}</td>
@@ -110,17 +110,17 @@
                 <ul class="pagination pagination-lg">
                     <c:if test="${ph.showPrev}">
                         <li class="page-item">
-                            <a class="page-link" href="<c:url value="/board/boardList?page=${ph.beginPage - 1}&pageSize=${ph.pageSize}" />">&laquo;</a>
+                            <a class="page-link" href="<c:url value="/board/boardList${ph.sc.getQueryString(ph.beginPage - 1)}" />">&laquo;</a>
                         </li>
                     </c:if>
                     <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
                         <li class="page-item active">
-                            <a class="page-link" href="<c:url value='/board/boardList?page=${i}&pageSize=${ph.pageSize}'/>">${i}</a>
+                            <a class="page-link" href="<c:url value='/board/boardList${ph.sc.getQueryString(i)}'/>">${i}</a>
                         </li>
                     </c:forEach>
                     <c:if test="${ph.showNext}">
                         <li class="page-item">
-                            <a class="page-link" href="<c:url value='/board/boardList?page=${ph.endPage + 1}&pageSize=${ph.pageSize}'/>">&raquo;</a>
+                            <a class="page-link" href="<c:url value='/board/boardList${ph.sc.getQueryString(ph.endPage + 1)}'/>">&raquo;</a>
                         </li>
                     </c:if>
                 </ul>

@@ -89,5 +89,13 @@ public class PageHandler {
     public void setShowNext(boolean showNext) {
         this.showNext = showNext;
     }
+
+    public SearchCondition getSc() {
+        return sc;
+    }
+
+    public void setSc(SearchCondition sc) {
+        this.sc = sc;
+    }
 }
 

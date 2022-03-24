@@ -6,5 +6,6 @@
     <typeAliases>
         <typeAlias alias="UserDto" type="com.firstSpring.app.domain.UserDto"/>
         <typeAlias alias="BoardDto" type="com.firstSpring.app.domain.BoardDto" />
+        <typeAlias alias="SearchCondition" type="com.firstSpring.app.domain.SearchCondition"/>
     </typeAliases>
 </configuration>

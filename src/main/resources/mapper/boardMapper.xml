@@ -33,15 +33,15 @@
         </choose>
     </sql>
 
-    <select id="searchSelectPage" parameterType="SearchConition" resultType="BoardDto">
+    <select id="searchSelectPage" parameterType="SearchCondition" resultType="BoardDto">
         SELECT bno, title, content, name, email
         FROM board
         WHERE TRUE
         <include refid="searchCondition"/>
-        LIMIT #{offset}, #{pageSize}
         ORDER BY reg_date DESC, bno DESC
+        LIMIT #{offset}, #{pageSize}
     </select>
-    <select id="searchResultCnt" parameterType="SearchConition" resultType="Integer">
+    <select id="searchResultCnt" parameterType="SearchCondition" resultType="Integer">
         SELECT count(*)
         FROM board
         WHERE TRUE
