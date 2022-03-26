@@ -80,7 +80,7 @@ public class LoginController {
         System.out.println("result = " + result);
         // Error 발생시 다시 회원가입 화면 보여주기
         if (result.hasErrors()) {
-            return "errorPage";
+            return "error";
         }
 
         try {

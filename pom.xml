@@ -109,6 +109,22 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.9.7</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<!--WebSocket 라이브러리, TextWebSocketHandler 사용가능-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<!--웹 소켓 채팅의 Json 타입을 java 형태로 바꿔주는 역할, Objectmapper 사용-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.2.1</version>
+		</dependency>
+
 
 
 		<!-- Logging -->
