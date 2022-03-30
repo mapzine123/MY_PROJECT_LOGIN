@@ -57,9 +57,10 @@ public class LoginController {
                 return "login";
             }
 
-            session.setAttribute("email", userDto.getEmail());
-            session.setAttribute("name", userDto.getName());
-            Cookie cookie = new Cookie("email", userDto.getEmail());
+            session.setAttribute("email", dbUserDto.getEmail());
+            session.setAttribute("name", dbUserDto.getName());
+            System.out.println("session.getAttribute(\"name\") = " + session.getAttribute("name"));
+            Cookie cookie = new Cookie("email", dbUserDto.getEmail());
             if(!rememberId) {
                 cookie.setMaxAge(0);
             }

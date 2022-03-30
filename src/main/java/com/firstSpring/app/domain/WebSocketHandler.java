@@ -1,5 +1,6 @@
 package com.firstSpring.app.domain;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -9,7 +10,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@Component
 public class WebSocketHandler extends TextWebSocketHandler {
     private static List<WebSocketSession> list = new ArrayList<WebSocketSession>();
 
