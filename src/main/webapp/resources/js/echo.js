@@ -1,9 +1,9 @@
 $(document).ready(function() {
     let websocket;
 
-    let sendBtn = document.querySelector(".sendBtn");
 
     function connect() {
+        const sendBtn = document.querySelector(".sendBtn");
         const wsUri = sessionStorage.getItem("wsUri");
         const name = sessionStorage.getItem("name");
 
@@ -34,12 +34,33 @@ $(document).ready(function() {
         function onMessage(event) {
             data = (event.data).slice(3, event.data.length);
             messageBox = document.querySelector(".chatBox");
-            messageBox.innerHTML = data + "<br/>" + messageBox.innerHTML;
+            const cardBorder = document.createElement("div");
+            cardBorder.classList.add("card");
+            cardBorder.classList.add("borer-primary");
+            cardBorder.classList.add("mb-3");
+
+            const cardHeader = document.createElement("div");
+            cardHeader.classList.add("card-header");
+            cardHeader.innerText = sessionStorage.getItem("name");
+
+            const cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
+
+            const cardText = document.createElement("p");
+            cardText.classList.add("card-text");
+            cardText.innerText = data;
+
+            cardBorder.appendChild(cardHeader);
+            cardBorder.appendChild(cardBody);
+
+            cardBody.appendChild(cardText);
+
+            messageBox.prepend(cardBorder);
         }
         function onClose() {
 
         }
-        document.querySelector(".sendBtn").addEventListener("click", send);
+        sendBtn.addEventListener("click", send);
         const divForm = document.querySelector(".divForm");
         function sendMsg(event) {
             event.preventDefault();
