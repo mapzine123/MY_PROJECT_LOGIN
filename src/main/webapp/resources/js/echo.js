@@ -1,6 +1,8 @@
 $(document).ready(function() {
     let websocket;
 
+    alert("ASFSADFASF");
+
     let sendBtn = document.querySelector(".sendBtn");
 
     function connect() {
@@ -21,7 +23,9 @@ $(document).ready(function() {
         function send() {
             let messageBox = document.querySelector(".messageBox");
             msg = messageBox.value;
-            websocket.send(name + " : " + msg);
+            if(msg.trim() !== "") {
+                websocket.send(name + " : " + msg);
+            }
             document.querySelector(".messageBox").value = "";
             messageBox.focus();
         }
@@ -31,7 +35,6 @@ $(document).ready(function() {
         }
         function onMessage(event) {
             data = (event.data).slice(3, event.data.length);
-            console.dir(event);
             messageBox = document.querySelector(".chatBox");
             messageBox.innerHTML = data + "<br/>" + messageBox.innerHTML;
         }
