@@ -16,7 +16,7 @@
         SELECT count(*) FROM board;
     </select>
     <select id="select" resultType="BoardDto" parameterType="int">
-        SELECT bno, title, content, name, email FROM board WHERE bno = #{bno}
+        SELECT bno, title, content, name, email, reg_date FROM board WHERE bno = #{bno}
     </select>
     <sql id="searchCondition">
         <choose>
@@ -34,7 +34,7 @@
     </sql>
 
     <select id="searchSelectPage" parameterType="SearchCondition" resultType="BoardDto">
-        SELECT bno, title, content, name, email
+        SELECT bno, title, content, name, email, reg_date
         FROM board
         WHERE TRUE
         <include refid="searchCondition"/>
@@ -57,5 +57,8 @@
 
     <delete id="delete" parameterType="map">
         DELETE FROM board WHERE bno = #{bno} AND email = #{email}
+    </delete>
+    <delete id="deleteAll">
+        DELETE FROM board;
     </delete>
 </mapper>

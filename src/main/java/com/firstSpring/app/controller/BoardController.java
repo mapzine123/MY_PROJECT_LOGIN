@@ -126,7 +126,6 @@ public class BoardController {
             if (rowCnt != 1) {
                 throw new Exception("Write Error");
             }
-            System.out.println("boardDto = " + boardDto);
             rattr.addFlashAttribute("msg", "WRT_OK");
             return "redirect:/board/boardList";
         } catch (Exception e) {

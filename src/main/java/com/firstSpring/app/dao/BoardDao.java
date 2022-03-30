@@ -50,4 +50,8 @@ public class BoardDao {
     public List<BoardDto> searchSelectPage(SearchCondition sc) throws Exception {
         return session.selectList(namespace + "searchSelectPage", sc);
     }
+
+    public int deleteAll() {
+        return session.delete(namespace + "deleteAll");
+    }
 }

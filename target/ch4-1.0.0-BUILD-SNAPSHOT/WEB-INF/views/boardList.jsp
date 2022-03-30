@@ -98,7 +98,7 @@
                         <td>${boardDto.title}</td>
                         <td><a href="<c:url value="/board/read${ph.sc.queryString}&bno=${boardDto.bno}"/>"><c:out value="${boardDto.content}"/></a></td>
                         <td>${boardDto.name}</td>
-                        <td>${boardDto.reg_date}}</td>
+                        <td>${boardDto.reg_date}</td>
                         <td>${boardDto.viewCnt}</td>
                     </tr>
                 </c:forEach>

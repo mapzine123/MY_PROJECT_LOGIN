@@ -20,8 +20,16 @@ public class BoardDaoTest {
     public void insert() throws Exception {
         int cnt = 0;
         for(int i = 0; i < 255; i++) {
+            BoardDto dto = new BoardDto(i + "asdff", "asadfasdf");
             cnt++;
+            dao.insert(dto);
         }
         assertTrue(cnt == 255);
+    }
+    @Test
+    public void insertBoard() throws Exception {
+        BoardDto selectDto = dao.select(79);
+        System.out.println("selectDto = " + selectDto);
+        assertTrue(selectDto != null);
     }
 }

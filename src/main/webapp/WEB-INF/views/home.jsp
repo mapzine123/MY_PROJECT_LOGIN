@@ -22,12 +22,5 @@
 </script>
 
 <%@ include file="jspf/nav.jspf"%>
-<script>
-    $(document).ready(function() {
-        $("#clickeded").on("click", function() {
-            alert(${sessionScope.email});
-        })
-    });
-</script>
 </body>
 </html>
