@@ -40,6 +40,7 @@ public class BoardService {
 
     public BoardDto read(int bno) {
         boardDao.increaseViewCnt(bno);
+
         return boardDao.select(bno);
     }
 

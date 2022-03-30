@@ -34,7 +34,7 @@
     </sql>
 
     <select id="searchSelectPage" parameterType="SearchCondition" resultType="BoardDto">
-        SELECT bno, title, content, name, email, reg_date
+        SELECT bno, title, content, name, email, reg_date, viewCnt
         FROM board
         WHERE TRUE
         <include refid="searchCondition"/>

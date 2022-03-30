@@ -32,4 +32,10 @@ public class BoardDaoTest {
         System.out.println("selectDto = " + selectDto);
         assertTrue(selectDto != null);
     }
+
+    @Test
+    public void increase() throws Exception {
+        int rowCnt = dao.increaseViewCnt(79);
+        assertTrue(rowCnt == 1);
+    }
 }
