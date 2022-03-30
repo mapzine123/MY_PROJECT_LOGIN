@@ -1,8 +1,6 @@
 $(document).ready(function() {
     let websocket;
 
-    alert("ASFSADFASF");
-
     let sendBtn = document.querySelector(".sendBtn");
 
     function connect() {
@@ -48,6 +46,8 @@ $(document).ready(function() {
             send();
         }
         divForm.addEventListener("submit", sendMsg);
+
+        $(window).on("beforeunload", disconnect);
     }
     connect();
 
