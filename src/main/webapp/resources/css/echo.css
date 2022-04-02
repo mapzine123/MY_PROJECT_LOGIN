@@ -2,6 +2,10 @@
     display : none;
 }
 
+.messageSize {
+    margin-left: 20px;
+}
+
 body {
     position: relative;
     width : 98vw;
@@ -41,6 +45,7 @@ body {
 .messageBox {
     /* margin-left: 150px; */
 }
+
 .sendBtn {
     /* mergin-right : 150px; */
 }

@@ -36,14 +36,15 @@ $(document).ready(function() {
             messageBox = document.querySelector(".chatBox");
             const cardBorder = document.createElement("div");
             cardBorder.classList.add("card");
-            cardBorder.classList.add("borer-primary");
+            cardBorder.classList.add("border-primary");
             cardBorder.classList.add("mb-3");
+            cardBorder.classList.add("messageSize");
 
-            const cardHeader = document.createElement("div");
+            const cardHeader = document.createElement("span");
             cardHeader.classList.add("card-header");
             cardHeader.innerText = sessionStorage.getItem("name");
 
-            const cardBody = document.createElement("div");
+            const cardBody = document.createElement("span");
             cardBody.classList.add("card-body");
 
             const cardText = document.createElement("p");
@@ -71,6 +72,4 @@ $(document).ready(function() {
         $(window).on("beforeunload", disconnect);
     }
     connect();
-
-
 });
